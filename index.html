@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f8f9fa">
+  <meta name="description" content="小耳朵，一台只播放你的声音的私人随身听。">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>小耳朵 · 私人随身听</title>
+  <link rel="icon" href="assets/dog.png">
+  <link rel="apple-touch-icon" href="assets/dog.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <svg class="symbols" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
+    <symbol id="plus" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/></symbol>
+    <symbol id="play-icon" viewBox="0 0 24 24"><path d="m8 4 12 8-12 8Z" fill="currentColor" stroke-linejoin="round"/></symbol>
+    <symbol id="pause-icon" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14" stroke-width="4"/></symbol>
+    <symbol id="prev-icon" viewBox="0 0 24 24"><path d="M4 6v12M12 6 5 12l7 6Zm9 0-8 6 8 6Z" fill="currentColor"/></symbol>
+    <symbol id="next-icon" viewBox="0 0 24 24"><path d="M20 6v12M12 6l7 6-7 6ZM3 6l8 6-8 6Z" fill="currentColor"/></symbol>
+    <symbol id="repeat-icon" viewBox="0 0 24 24"><path d="m16 3 4 4-4 4M4 11V9a2 2 0 0 1 2-2h14M8 21l-4-4 4-4m12 0v2a2 2 0 0 1-2 2H4"/></symbol>
+    <symbol id="volume-icon" viewBox="0 0 24 24"><path d="M11 4 5 9H2v6h3l6 5ZM15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></symbol>
+    <symbol id="list-icon" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.1M3 12h.1M3 18h.1" stroke-width="3"/></symbol>
+    <symbol id="chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="close-icon" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="note-icon" viewBox="0 0 24 24"><path d="M9 17V5l12-2v12M9 9l12-2"/><ellipse cx="6" cy="18" rx="3" ry="3"/><ellipse cx="18" cy="16" rx="3" ry="3"/></symbol>
+  </defs></svg>
+
+  <main class="player" aria-label="小耳朵音乐播放器">
+    <header class="header"><h1>小耳朵<span class="brand-etch">LITTLE EARS</span></h1><button class="import-button metal-button" data-import aria-label="导入音频"><svg><use href="#plus"/></svg></button></header>
+    <section class="art-stage" aria-label="歌曲封面与小狗">
+      <div class="glass-bezel"><div class="glass-screen"><img class="cover" src="assets/cover.png" alt="透明雨伞下的女孩，雨夜动漫封面"><div class="glass-reflection"></div><span class="playing-light" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div></div>
+      <button id="dog" class="dog" aria-label="摸摸小耳朵，让它回应你" data-expression="idle"><span class="dog-sprite"></span><span class="dog-heart" aria-hidden="true">♡</span></button>
+      <span class="dog-bubble" id="dog-bubble" role="status" aria-live="polite">点点我，陪你听。</span>
+    </section>
+    <section class="track-summary" aria-live="polite"><div class="track-text"><h2 id="track-title">今天，想听什么？</h2><p id="track-subtitle">导入一首自己的歌</p></div><span id="track-position" class="track-position">— / —</span></section>
+    <div class="timeline"><input id="seek" class="range seek" type="range" min="0" max="100" step="0.1" value="0" aria-label="播放进度" disabled><div class="times"><span id="elapsed">0:00</span><span id="duration">0:00</span></div></div>
+    <section class="control-deck" aria-label="播放控制">
+      <div class="volume-deck"><div class="fader-well"><input id="volume" type="range" min="0" max="1" step="0.01" value="0.75" aria-label="音量"></div><button id="mute" class="plain-button volume-button" aria-label="静音"><svg><use href="#volume-icon"/></svg></button></div>
+      <div class="wheel-rim"><div class="wheel">
+        <button id="menu" class="wheel-button wheel-menu" aria-label="打开我的歌曲">MENU</button>
+        <button id="previous" class="wheel-button wheel-previous" aria-label="上一首" disabled><svg><use href="#prev-icon"/></svg></button>
+        <button id="next" class="wheel-button wheel-next" aria-label="下一首" disabled><svg><use href="#next-icon"/></svg></button>
+        <button id="repeat" class="wheel-button wheel-repeat" aria-label="开启单曲循环" aria-pressed="false"><svg><use href="#repeat-icon"/></svg><span class="repeat-one">1</span></button>
+        <button id="play" class="center-button" aria-label="播放" disabled><svg><use href="#play-icon"/></svg></button>
+      </div></div>
+    </section>
+    <button class="library-entry" id="open-library" aria-haspopup="dialog"><svg><use href="#list-icon"/></svg><span>我的歌曲</span><span id="track-count">0 首</span><svg class="entry-chevron"><use href="#chevron"/></svg></button>
+    <p class="local-note" id="storage-note">专属歌单 · 自选音源仅在本机保存</p>
+  </main>
+
+  <dialog id="library" aria-labelledby="library-title">
+    <div class="sheet-handle" aria-hidden="true"></div>
+    <header class="sheet-header"><div><h2 id="library-title">我的歌曲</h2><p id="library-count">自己的声音，慢慢收集。</p></div><button id="close-library" class="plain-button" aria-label="关闭歌单"><svg><use href="#close-icon"/></svg></button></header>
+    <div class="library-content" id="drop-area"><div id="empty-library" class="empty-library"><span class="empty-dog" aria-hidden="true"></span><h3>把第一首歌放进来</h3><p>原创、翻唱，或一小段随手录音。</p><button class="add-song-button" data-import><svg><use href="#plus"/></svg>选择音频</button><small>MP3 / M4A / WAV / FLAC / OGG</small></div><ol id="track-list" class="track-list"></ol></div>
+    <footer class="sheet-footer"><button class="add-song-button" data-import><svg><use href="#plus"/></svg>添加音源</button><span>自选音源仅保存在本机</span></footer>
+  </dialog>
+  <input id="file-input" type="file" accept="audio/*,.mp3,.m4a,.wav,.flac,.ogg,.aac,.opus,.aif,.aiff" multiple hidden>
+  <audio id="audio" preload="metadata"></audio>
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

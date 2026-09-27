@@ -1,0 +1,62 @@
+[
+  {
+    "id": "collection-dear-d",
+    "title": "Dear D",
+    "src": "assets/audio/dear-d.m4a",
+    "cover": "assets/covers/cover-5.png",
+    "format": "M4A",
+    "size": 669195,
+    "duration": 78.037333,
+    "bundled": true
+  },
+  {
+    "id": "collection-sleepless",
+    "title": "失眠",
+    "src": "assets/audio/sleepless.m4a",
+    "cover": "assets/covers/cover-2.png",
+    "format": "M4A",
+    "size": 880052,
+    "duration": 102.208,
+    "bundled": true
+  },
+  {
+    "id": "collection-small-talk",
+    "title": "碎碎念",
+    "src": "assets/audio/small-talk.wav",
+    "cover": "assets/covers/cover-1.png",
+    "format": "WAV",
+    "size": 5987430,
+    "duration": 41.578667,
+    "bundled": true
+  },
+  {
+    "id": "collection-love-song",
+    "title": "怎么唱情歌",
+    "src": "assets/audio/love-song.wav",
+    "cover": "assets/covers/cover-3.png",
+    "format": "WAV",
+    "size": 13830246,
+    "duration": 96.042667,
+    "bundled": true
+  },
+  {
+    "id": "collection-thin",
+    "title": "瘦子",
+    "src": "assets/audio/thin.wav",
+    "cover": "assets/covers/cover-4.png",
+    "format": "WAV",
+    "size": 8042598,
+    "duration": 55.850667,
+    "bundled": true
+  },
+  {
+    "id": "collection-pretend",
+    "title": "假装",
+    "src": "assets/audio/pretend.wav",
+    "cover": "assets/covers/cover-5.png",
+    "format": "WAV",
+    "size": 7004694,
+    "duration": 48.643,
+    "bundled": true
+  }
+]
